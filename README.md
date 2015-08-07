@@ -18,7 +18,7 @@ luego resetean lighttpd:
 para verificar si el puerto escucha quedo bien ponen 
 netstat -ntulp
 y buscan lighttpd tendra que salirle 0.0.0.0:8080 
-#ejecucion del script 
+#Ejecucion del script 
 solo abren terminal y escriben ./thebloodw.sh
 #Probado en Kali linux!.
 

